@@ -1,8 +1,8 @@
 class Solution {
-    int t[][];
+    int dp[][];
     public int uniquePaths(int m, int n) {// recursion and memoisation
-        t = new int[n][m];
-        for(int row[]: t){
+        dp = new int[n][m];
+        for(int row[]: dp){
             Arrays.fill(row, -1);
         }
         
@@ -18,11 +18,11 @@ class Solution {
             return 1;
         }
         
-        if(t[i][j]!=-1){
-            return t[i][j];
+        if(dp[i][j]!=-1){
+            return dp[i][j];
         }
         
-        return t[i][j] = solve(n, m, i, j+1)  + solve(n, m, i+1, j);
+        return dp[i][j] = solve(n, m, i, j+1)  + solve(n, m, i+1, j);
     }
     
 }
