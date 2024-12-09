@@ -1,35 +1,47 @@
 class Solution {
     public String reverseWords(String s) {
+        StringBuilder s1 = new StringBuilder();
         Stack<String> st = new Stack<>();
-        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<s.length(); i++){
+            if(s.charAt(i)!=' '){
+                s1.append(s.charAt(i));
+            }
+            else if(s1.length()>0){
+                st.push(s1.toString());
+                s1 = new StringBuilder();
+            }
+            
+            
+        }
         
-        int i=0; 
-        while(i<s.length() ){
-            char ch = s.charAt(i);
-            if(ch!=' '){
-                sb = new StringBuilder();
-                
-                while(i<s.length() && s.charAt(i)!=' '){
-                    sb.append(s.charAt(i));
-                    i++;
-                }
-                
-                st.push(sb.toString());
+        if(s1.length()>0){
+            st.push(s1.toString());
+        }
+        
+        
+        
+        
+        
+        s1 = new StringBuilder();
+        
+        
+        
+        
+        while(!st.isEmpty()){
+            String k = st.pop();
+            if(st.isEmpty()){
+                            s1.append(k);
             }
             else{
-                 i++;
+                s1.append(k);
+            s1.append(' ');
             }
+           
         }
         
         
-        StringBuilder result = new StringBuilder();
-        while(!st.isEmpty()){
-            result.append(st.pop());
-            if(!st.isEmpty()){
-                result.append(' ');
-            }
-        }
+        return s1.toString();
         
-        return result.toString();
+        
     }
 }
